@@ -1,0 +1,12 @@
+import sys
+
+N = int(sys.stdin.readline())
+CountingArr = [0]*10000
+
+for i in range(N):
+  CountingArr[int(sys.stdin.readline())] += 1
+
+for i in range(10000):
+  if CountingArr[i] != 0:
+    for j in range(CountingArr[i]):
+      print(i)
