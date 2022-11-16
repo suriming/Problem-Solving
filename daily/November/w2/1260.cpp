@@ -13,12 +13,13 @@ deque<int> visstk; //dfs
 queue<int> visque; //bfs
 
 void dfs_recur(int x){
+    if (visarr[x]){
+        return;
+    }
     visarr[x] = 1;
     printf("%d ", x);
     for (int i=0; i<adjvec[x].size(); i++){
-        if (!visarr[i]){
-            dfs_recur(adjvec[x][i]);
-        }
+        dfs_recur(adjvec[x][i]);
     }
 }
 
@@ -33,7 +34,7 @@ void bfs(int x){
         }
 
         visarr[cur] = 1;
-        printf("%d", cur);
+        printf("%d ", cur);
 
         for (int i=0; i<adjvec[cur].size(); i++){
             visque.push(adjvec[cur][i]);
@@ -52,7 +53,7 @@ void dfs_stack(int x){
         }
 
         visarr[cur] = 1;
-        printf("%d", cur);
+        printf("%d ", cur);
 
         for (int i=adjvec[cur].size()-1; i>=0; i--){
             visstk.push_back(adjvec[cur][i]);
@@ -70,12 +71,14 @@ int main(){
         adjvec[k].push_back(j);
     }
 
-    for (int i=1; i<M+1; i++){
+    for (int i=0; i<N+1; i++){
         sort(adjvec[i].begin(), adjvec[i].end());
     }
 
+    fill_n(visarr, 1001, 0);
     dfs_recur(V);
     fill_n(visarr, 1001, 0);
+    printf("\n");
     bfs(V);
 
     return 0;
