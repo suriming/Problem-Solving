@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string>
 using namespace std;
+// 영화감독 숍
 
 int N;
 

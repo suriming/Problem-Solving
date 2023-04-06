@@ -2,6 +2,7 @@
 #include <algorithm>
 using namespace std;
 //동전 0
+//어 rev버전이 메모리가 더 든다..왜지
 
 int N, K;
 int ans = 0;
