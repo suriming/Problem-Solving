@@ -6,15 +6,29 @@ int T = 10;
 int N;
 int lc[201], rc[201];
 char carr[201];
-int ans = 0;
+int ans = 1;
+
+void inorder(int cur){
+    if (lc[cur] != -1) {
+        if (carr[cur] != '+' && carr[cur] != '-' && carr[cur] != '*' && carr[cur] != '/') ans = 0;
+        inorder(lc[cur]);
+    }
+    else if (lc[cur] == -1){
+        if (carr[cur] == '+' || carr[cur] == '-' || carr[cur] == '*' || carr[cur] == '/') ans = 0;
+    }
+    if (rc[cur] != -1) inorder(rc[cur]);
+    else if (rc[cur] == -1){
+        if (lc[cur] != -1) ans = 0;
+    }
+}
 
 int main(){
-    for (int t = 1; t < T; ++t){
+    for (int t = 1; t <= T; ++t){
         cin >> N;
-        fill(lc, lc+201, 0);
-        fill(rc, rc+201, 0);
+        fill(lc, lc+201, -1);
+        fill(rc, rc+201, -1);
         fill(carr, carr+201, 0);
-        ans = 0;
+        ans = 1;
         for (int i = 1; i <= N; ++i){
             int n, l, r;
             char c;
@@ -29,12 +43,13 @@ int main(){
             }
             else cin >> n >> c;
             carr[n] = c;
-            for (int i = 1; i <= N; ++i){
-                cout << carr[i];
-            }
         }
-
-
+        // for (int i = 1; i <= N; ++i){
+        //         cout << carr[i] << ' ';
+        // }
+        // cout << '\n';
+        inorder(1);
+        cout << "#" << t << " " << ans << '\n';
     }
     return 0;
 }
