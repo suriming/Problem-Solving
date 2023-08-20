@@ -2,6 +2,8 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=c++
 
 *.txt
+*.DS_Store
+*.json
 
 # Ignore all
 *
