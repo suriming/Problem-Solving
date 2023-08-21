@@ -1,11 +1,6 @@
 # Created by https://www.toptal.com/developers/gitignore/api/c++
 # Edit at https://www.toptal.com/developers/gitignore?templates=c++
 
-*.txt
-.DS_Store
-.vscode
-*.json
-
 # Ignore all
 *
 
@@ -51,3 +46,6 @@
 *.app
 
 # End of https://www.toptal.com/developers/gitignore/api/c++
+.DS_Store
+*.txt
+*.plist
